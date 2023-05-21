@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.com">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Home page</title>
+  </head>
+  <body>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">HOTEL STEWADRSHIP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item active">
+        <a class="nav-link" href="addcustomer">Add Customer</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="searchroom">Search room</a>
+      </li>
+      
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/login}">Log out</a>
+      </li>
+      
+      
+      
+      
+    </ul>
+    
+  </div>
+  </nav>
+    
+    <div class="container p-5">
+         <table class="table table-striped">
+            <thead class="bg-primary text-white">
+               <tr>
+                   <th scope="col">Id</th>
+                   <th scope="col">firstname</th>
+                   <th scope="col">lastname</th>
+                 
+                   <th scope="col">email</th>
+                   <th scope="col">phoneno</th>
+                   <th scope="col">address</th>
+                   <th scope="col">Action</th>
+                   
+                   
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                 <tr th:each="e: ${cus}">
+                    <th th:text="${e.id}">1</th>
+                    <td th:text="${e.firstname}"></td>
+                    <td th:text="${e.lastname}"></td>
+               
+                    <td th:text="${e.email}"></td>
+                    <td th:text="${e.phoneno}"></td>
+                    <td th:text="${e.address}" ></td>
+                    
+                    <td> <a class= "btn btn-sm btn-primary" th:href="@{/edit/{id}(id=${e.id})}" >Edit</a> <a
+                           class= "btn btn-sm btn-danger" th:href="@{/delete/{id}(id=${e.id})}">Delete</a></td>
+                   
+                 </tr>
+               
+    
+    
+            </tbody>
+         </table>
+    </div>
+    
+   
+
+    
+  </body>
+</html>
+
